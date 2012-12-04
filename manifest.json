@@ -1,0 +1,26 @@
+{
+	"name": "Kera Tutorial Recorder",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "A Chrome extension to record Kera tutorials in your browser.",
+	"browser_action": {
+		"default_icon": "spool.png"
+	},
+	"background": {
+		"scripts": [
+			"shared/util.js",
+			"shared/messages.js",
+			"background/main.js"
+		]
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://*/*"],
+			"js": [
+				"shared/util.js",
+				"shared/messages.js",
+				"content/main.js"
+			]
+		}
+	]
+}
