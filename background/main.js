@@ -42,7 +42,7 @@
 	}
 
 	function stopRecording(tabId) {
-		console.log({ events: sessions[tabId].events });
+		var session = { events: sessions[tabId].events };
 		chrome.tabs.sendMessage(tabId, 'stop');
 		setBrowserUI({
 			tabId: tabId,
@@ -51,6 +51,8 @@
 		});
 		sessions[tabId] = null;
 		console.log("Stopped recording on tab " + tabId);
+		console.log(session);
+		Util.copy(JSON.stringify(session));
 	}
 
 	function setBrowserUI(options) {
